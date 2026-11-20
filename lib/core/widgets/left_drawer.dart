@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants/app_colors.dart';
+import '../../features/feed/screens/feed_screen.dart';
 import '../../features/home/screens/menu_screen.dart';
 
 /// Centralized navigation drawer for routing across SELARAS Mobile modules.
@@ -82,7 +83,14 @@ class LeftDrawer extends StatelessWidget {
             ),
             title: const Text('Community Feed'),
             subtitle: const Text('Lead: Joel', style: TextStyle(fontSize: 11)),
-            // onTap
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (context) => const FeedScreen(),
+                ),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(
