@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/info_card.dart';
 import '../../../core/widgets/left_drawer.dart';
+import '../../challenges/screens/challenges_screen.dart';
 import '../models/item_homepage.dart';
 import '../widgets/item_card.dart';
 
@@ -18,35 +19,23 @@ class MenuScreen extends StatelessWidget {
 
   // Action buttons representing each SELARAS module
   final List<ItemHomepage> items = [
-    ItemHomepage(
-      "Articles",
-      Icons.menu_book,
-      color: AppColors.primary500,
-      // Targetscreen
-    ),
+    ItemHomepage("Articles", Icons.menu_book, color: AppColors.primary500),
     ItemHomepage(
       "Challenges",
       Icons.eco,
       color: AppColors.secondary500,
-      // Targetscreen
+      targetScreen: const ChallengesScreen(),
     ),
-    ItemHomepage(
-      "Feed",
-      Icons.forum,
-      color: AppColors.secondary600,
-      // Targetscreen
-    ),
+    ItemHomepage("Feed", Icons.forum, color: AppColors.secondary600),
     ItemHomepage(
       "Donations",
       Icons.volunteer_activism,
       color: AppColors.tertiary500,
-      // Targetscreen
     ),
     ItemHomepage(
       "Help Desk",
       Icons.support_agent,
       color: AppColors.secondary700,
-      // Targetscreen
     ),
     ItemHomepage("Logout", Icons.logout, color: const Color(0xFFC0392B)),
   ];
