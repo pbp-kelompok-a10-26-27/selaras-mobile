@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/info_card.dart';
 import '../../../core/widgets/left_drawer.dart';
+import '../../feed/screens/feed_screen.dart';
 import '../models/item_homepage.dart';
 import '../widgets/item_card.dart';
 
@@ -34,7 +35,7 @@ class MenuScreen extends StatelessWidget {
       "Feed",
       Icons.forum,
       color: AppColors.secondary600,
-      // Targetscreen
+      targetScreen: const FeedScreen(),
     ),
     ItemHomepage(
       "Donations",
