@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 /// Django REST Framework API endpoints for the SELARAS backend.
 /// Corresponds to backend routing defined in selaras-web (config/urls.py).
 class ApiEndpoints {
@@ -7,22 +9,40 @@ class ApiEndpoints {
   static const String productionBaseUrl =
       "https://steven-dyanizha-selaras-web.pws.cs.ui.ac.id";
 
-  // Active base URL (defaulted to production server)
-  static const String baseUrl = productionBaseUrl;
+  /// Override at build time, e.g.
+  /// `flutter run --dart-define=API_BASE_URL=https://example.com`
+  static const String _override = String.fromEnvironment('API_BASE_URL');
+
+  /// Active base URL. Defaults to the local Django server (the emulator's alias
+  /// for the host machine on Android, localhost elsewhere) until the DRF API is
+  /// deployed to production.
+  static String get baseUrl {
+    if (_override.isNotEmpty) return _override;
+    if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
+      return androidEmulatorBaseUrl;
+    }
+    return localBaseUrl;
+  }
+
+  static String get _v1 => "$baseUrl/api/v1";
 
   // Module Endpoints (DRF v1 API)
-  static const String articles = "$baseUrl/api/v1/articles/";
-  static const String challenges = "$baseUrl/api/v1/challenges/";
-  static const String donations = "$baseUrl/api/v1/donations/";
-  static const String donationCampaigns =
-      "$baseUrl/api/v1/donations/campaigns/";
-  static const String feeds = "$baseUrl/api/v1/feeds/";
-  static const String feedPosts = "$baseUrl/api/v1/feeds/posts/";
-  static const String helpdesk = "$baseUrl/api/v1/helpdesk/";
-  static const String helpdeskTickets = "$baseUrl/api/v1/helpdesk/tickets/";
+  static String get articles => "$_v1/articles/";
+  static String get challenges => "$_v1/challenges/";
+  static String get donations => "$_v1/donations/";
+  static String get donationCampaigns => "$_v1/donations/campaigns/";
+  static String get feeds => "$_v1/feeds/";
+  static String get feedPosts => "$_v1/feeds/posts/";
+  static String get helpdesk => "$_v1/helpdesk/";
+  static String get helpdeskTickets => "$_v1/helpdesk/tickets/";
 
-  // Authentication endpoints
-  static const String login = "$baseUrl/accounts/login/";
-  static const String register = "$baseUrl/accounts/register/";
-  static const String logout = "$baseUrl/accounts/logout/";
+  // Token-protected modules (answer 401 without an `Authorization: Token` header)
+  static String get accountProfile => "$_v1/accounts/me/";
+  static String get notifications => "$_v1/notifications/";
+  static String get dashboardOverview => "$_v1/dashboard/overview/";
+
+  // Authentication endpoints (DRF, token based)
+  static String get login => "$_v1/accounts/login/";
+  static String get register => "$_v1/accounts/register/";
+  static String get logout => "$_v1/accounts/logout/";
 }

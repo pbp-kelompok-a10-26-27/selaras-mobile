@@ -29,7 +29,9 @@ class ItemCard extends StatelessWidget {
             );
 
           // Navigate to the target module screen if present
-          if (item.targetScreen != null) {
+          if (item.route != null) {
+            Navigator.pushNamed(context, item.route!);
+          } else if (item.targetScreen != null) {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => item.targetScreen!),

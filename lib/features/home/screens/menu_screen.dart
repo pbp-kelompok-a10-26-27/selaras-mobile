@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_colors.dart';
+import '../../../core/navigation/route_names.dart';
 import '../../../core/widgets/info_card.dart';
 import '../../../core/widgets/left_drawer.dart';
 import '../models/item_homepage.dart';
@@ -19,35 +20,54 @@ class MenuScreen extends StatelessWidget {
   // Action buttons representing each SELARAS module
   final List<ItemHomepage> items = [
     ItemHomepage(
+      "Account",
+      Icons.person,
+      color: AppColors.primary700,
+      route: AppRoutes.accounts,
+    ),
+    ItemHomepage(
       "Articles",
       Icons.menu_book,
       color: AppColors.primary500,
-      // Targetscreen
+      route: AppRoutes.articles,
     ),
     ItemHomepage(
       "Challenges",
       Icons.eco,
       color: AppColors.secondary500,
-      // Targetscreen
+      route: AppRoutes.challenges,
     ),
     ItemHomepage(
       "Feed",
       Icons.forum,
       color: AppColors.secondary600,
-      // Targetscreen
+      route: AppRoutes.feed,
     ),
     ItemHomepage(
       "Donations",
       Icons.volunteer_activism,
       color: AppColors.tertiary500,
-      // Targetscreen
+      route: AppRoutes.donations,
     ),
     ItemHomepage(
       "Help Desk",
       Icons.support_agent,
       color: AppColors.secondary700,
-      // Targetscreen
+      route: AppRoutes.helpdesk,
     ),
+    ItemHomepage(
+      "Notifications",
+      Icons.notifications,
+      color: AppColors.primary800,
+      route: AppRoutes.notifications,
+    ),
+    ItemHomepage(
+      "Dashboard",
+      Icons.dashboard,
+      color: AppColors.secondary800,
+      route: AppRoutes.dashboard,
+    ),
+    // Sign-out arrives with the accounts feature
     ItemHomepage("Logout", Icons.logout, color: const Color(0xFFC0392B)),
   ];
 
