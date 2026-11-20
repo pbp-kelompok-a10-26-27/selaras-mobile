@@ -8,10 +8,14 @@ class ItemHomepage {
   final Color color;
   final Widget? targetScreen;
 
+  /// Named route to open (see `AppRoutes`). Preferred over [targetScreen].
+  final String? route;
+
   ItemHomepage(
     this.name,
     this.icon, {
     this.color = const Color(0xFF4C623F),
     this.targetScreen,
+    this.route,
   });
 }
