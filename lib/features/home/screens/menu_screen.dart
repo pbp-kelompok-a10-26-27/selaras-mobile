@@ -5,6 +5,7 @@ import '../../../core/widgets/info_card.dart';
 import '../../../core/widgets/left_drawer.dart';
 import '../models/item_homepage.dart';
 import '../widgets/item_card.dart';
+import '../../articles/screens/articles_screen.dart';
 
 /// Main Dashboard / Home Screen for SELARAS Mobile.
 /// Implements Tutorial 08 patterns (StatelessWidget, InfoCard, and GridView of ItemCards).
@@ -22,7 +23,7 @@ class MenuScreen extends StatelessWidget {
       "Articles",
       Icons.menu_book,
       color: AppColors.primary500,
-      // Targetscreen
+      targetScreen: const ArticlesScreen(),
     ),
     ItemHomepage(
       "Challenges",
