@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../constants/app_colors.dart';
 import '../../features/home/screens/menu_screen.dart';
+import '../../features/articles/screens/articles_screen.dart';
 
 /// Centralized navigation drawer for routing across SELARAS Mobile modules.
 class LeftDrawer extends StatelessWidget {
@@ -61,7 +62,14 @@ class LeftDrawer extends StatelessWidget {
               'Lead: Callista (Caca)',
               style: TextStyle(fontSize: 11),
             ),
-            // onTap
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ArticlesScreen(),
+                ),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(
